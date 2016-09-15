@@ -12,3 +12,13 @@ $ kubectl run -ti alpine --image webwurst/curl-utils sh
 $ minikube ssh
   curl http://localhost:5000
 ```
+
+```bash
+$ kubectl port-forward registry-1685615563-m469g 5000:5000
+  docker pull alpine
+  docker tag alpine localhost:5000/alpine
+  docker push localhost:5000/alpine
+
+$ minikube ssh
+  docker pull localhost:5000/alpine
+```
