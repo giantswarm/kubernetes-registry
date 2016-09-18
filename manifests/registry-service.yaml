@@ -5,7 +5,7 @@ metadata:
   labels:
     app: registry
 spec:
-  type: NodePort
+  # type: NodePort
   ports:
   - name: registry
     port: 5000

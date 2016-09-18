@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: registry
+  labels:
+    app: registry
+    component: ingress
+spec:
+  tls:
+  - hosts:
+    - registry.local.net
+    secretName: registry-tls-secret
+  rules:
+  - host: registry.local.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: registry
+          servicePort: 5000
