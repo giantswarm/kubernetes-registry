@@ -6,9 +6,9 @@ metadata:
     app: registry
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: registry
+  # selector:
+  #   matchLabels:
+  #     app: registry
   template:
     metadata:
       labels:
@@ -40,5 +40,3 @@ spec:
       volumes:
       - name: image-store
         emptyDir: {}
-        # persistentVolumeClaim:
-        #   claimName: kube-registry-pvc
