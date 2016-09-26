@@ -5,13 +5,18 @@ metadata:
   labels:
     app: registry
     component: ingress
+  annotations:
+    # kubernetes.io/tls-acme: "true"
+    # ingress.kubernetes.io/auth-type: basic
+    # ingress.kubernetes.io/auth-secret: kibana-basic-auth
+    # ingress.kubernetes.io/auth-realm: "realm string"
 spec:
-  tls:
-  - hosts:
-    - registry.local.net
-    secretName: registry-tls-secret
+  # tls:
+  # - secretName: registry-tls
+  #   hosts:
+  #   - registry.minikube.localnet
   rules:
-  - host: registry.local.net
+  - host: registry.minikube.localnet
     http:
       paths:
       - path: /
