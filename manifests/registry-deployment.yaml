@@ -1,18 +1,24 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: registry
+  name: kube-registry-v0
+  namespace: kube-system
   labels:
-    app: registry
+    k8s-app: kube-registry
+    version: v0
+    kubernetes.io/cluster-service: "true"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: registry
+      k8s-app: kube-registry
+      version: v0
   template:
     metadata:
       labels:
-        app: registry
+        k8s-app: kube-registry
+        version: v0
+        kubernetes.io/cluster-service: "true"
     spec:
       containers:
       - name: registry

@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: registry-proxy
+  namespace: kube-system
   labels:
     app: registry
     component: proxy
@@ -9,7 +10,8 @@ spec:
   template:
     metadata:
       labels:
-        app: registry
+        k8s-app: kube-registry
+        version: v0
         component: proxy
     spec:
       containers:
@@ -21,8 +23,7 @@ spec:
             memory: 50Mi
         env:
         - name: REGISTRY_HOST
-          # value: kube-registry.kube-system.svc.cluster.local
-          value: registry.default.svc.cluster.local
+          value: kube-registry.kube-system.svc.cluster.local
         - name: REGISTRY_PORT
           value: "5000"
         - name: FORWARD_PORT
