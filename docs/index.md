@@ -1,4 +1,13 @@
-# Private Registry
++++
+title = "Running a Private Docker Registry"
+description = "Recipe to spin up a private Docker Registry on Kubernetes."
+date = "2016-09-30"
+type = "page"
+weight = 140
+categories = ["recipes"]
++++
+
+# Running a Private Docker Registry
 
 If you want to store truly private Docker images for your cluster, you might want to run your own private Docker registry inside of it.
 
