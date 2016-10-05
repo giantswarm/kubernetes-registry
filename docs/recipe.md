@@ -4,7 +4,7 @@ If you want to store truly private Docker images for your cluster, you might wan
 
 Keep in mind that this recipe currently does not include SSL or authentification. To work around this, there's a proxy running on each node in the cluster, exposing a port onto the node (via `hostPort`), which Docker accepts as "secure", since it is accessed by `localhost`.
 
-_Note: The registry setup by this recipe currently uses non-persistent storage, so images pushed to it will not survive Pod restarts._
+_Note: The registry set up by this recipe currently uses non-persistent storage, so images pushed to it will not survive Pod restarts._
 
 ## Deploying the registry
 

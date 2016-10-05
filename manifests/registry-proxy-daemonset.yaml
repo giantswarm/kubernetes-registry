@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: registry-proxy
-  namespace: kube-system
+  namespace: app: registry
   labels:
     app: registry
     component: proxy
@@ -10,8 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        k8s-app: kube-registry
-        version: v0
+        app: registry
         component: proxy
     spec:
       containers:
