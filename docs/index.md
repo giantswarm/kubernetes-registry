@@ -28,15 +28,16 @@ kubectl apply --filename manifests/
 First, to push images to your private registry from the outside you can set up port forwarding with `kubectl`.
 
 ```bash
-$ POD=$(kubectl get pods --namespace kube-system -l k8s-app=kube-registry \
+$ POD=$(kubectl get pods --namespace registry -l app=registry \
     -o template --template '{{range .items}}{{.metadata.name}} {{.status.phase}}{{"\n"}}{{end}}' \
     | grep Running | head -1 | cut -f1 -d' ')
-$ kubectl port-forward --namespace kube-system $POD 5000:5000 &
+$ kubectl port-forward --namespace registry $POD 5000:5000 &
 ```
 
 You can then use your local docker client to push images to `localhost:5000`.
 
 ```bash
+$ docker pull alpine
 $ docker tag alpine localhost:5000/user/container:tag
 $ docker push localhost:5000/user/container:tag
 ```
