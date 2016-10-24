@@ -20,7 +20,7 @@ _Note: The registry set up by this recipe currently uses non-persistent storage,
 To deploy the registry just apply the manifests included in this recipe.
 
 ```bash
-kubectl apply --filename manifests/
+kubectl apply --filename https://raw.githubusercontent.com/giantswarm/kubernetes-registry/master/manifests-all.yaml
 ```
 
 ## Using the registry
