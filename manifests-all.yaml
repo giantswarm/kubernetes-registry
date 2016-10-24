@@ -1,9 +1,14 @@
 # Derived from ./manifests/*.yaml
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: registry---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: registry
+  namespace: registry
   labels:
     app: registry
 spec:
@@ -49,6 +54,7 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: registry-proxy
+  namespace: registry
   labels:
     app: registry
     component: proxy
@@ -68,8 +74,7 @@ spec:
             memory: 50Mi
         env:
         - name: REGISTRY_HOST
-          # value: kube-registry.kube-system.svc.cluster.local
-          value: registry.default.svc.cluster.local
+          value: registry.registry.svc.cluster.local
         - name: REGISTRY_PORT
           value: "5000"
         - name: FORWARD_PORT
@@ -83,6 +88,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: registry
+  namespace: registry
   labels:
     app: registry
 spec:
