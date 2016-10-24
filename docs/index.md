@@ -1,7 +1,7 @@
 +++
 title = "Running a Private Docker Registry"
 description = "Recipe to spin up a private Docker Registry on Kubernetes."
-date = "2016-09-30"
+date = "2016-10-24"
 type = "page"
 weight = 140
 categories = ["recipes"]
@@ -11,7 +11,7 @@ categories = ["recipes"]
 
 If you want to store truly private Docker images for your cluster, you might want to run your own private Docker registry inside of it.
 
-Keep in mind that this recipe currently does not include SSL or authentification. To work around this, there's a proxy running on each node in the cluster, exposing a port onto the node (via `hostPort`), which Docker accepts as "secure", since it is accessed by `localhost`.
+Keep in mind that this recipe currently does not include SSL or authentification. To work around this, there's a proxy running on each node in the cluster, exposing a port onto the node (via `hostPort`), which Docker accepts as "secure", since it is accessed via `localhost`.
 
 _Note: The registry set up by this recipe currently uses non-persistent storage, so images pushed to it will not survive Pod restarts._
 
