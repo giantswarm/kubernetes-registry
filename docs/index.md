@@ -4,7 +4,7 @@ description = "Recipe to spin up a private Docker Registry on Kubernetes."
 date = "2016-10-24"
 type = "page"
 weight = 140
-categories = ["recipes"]
+tags = ["recipe"]
 +++
 
 # Running a Private Docker Registry
