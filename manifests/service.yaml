@@ -5,6 +5,7 @@ metadata:
   namespace: registry
   labels:
     app: registry
+    component: main
 spec:
   type: NodePort
   ports:
@@ -13,3 +14,4 @@ spec:
     protocol: TCP
   selector:
     app: registry
+    component: main

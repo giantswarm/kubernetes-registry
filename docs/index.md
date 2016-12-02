@@ -28,10 +28,10 @@ kubectl apply --filename https://raw.githubusercontent.com/giantswarm/kubernetes
 First, to push images to your private registry from the outside you can set up port forwarding with `kubectl`.
 
 ```bash
-$ POD=$(kubectl get pods --namespace registry -l app=registry \
-    -o template --template '{{range .items}}{{.metadata.name}} {{.status.phase}}{{"\n"}}{{end}}' \
-    | grep Running | head -1 | cut -f1 -d' ')
-$ kubectl port-forward --namespace registry $POD 5000:5000 &
+$ REGISTRY_POD_NAME=$(kubectl get pods --namespace registry -l app=registry,component=main \
+  -o template --template '{{(index .items 0).metadata.name}}')
+
+$ kubectl --namespace registry port-forward $REGISTRY_POD_NAME 5000:5000
 ```
 
 You can then use your local docker client to push images to `localhost:5000`.
@@ -44,4 +44,4 @@ $ docker push localhost:5000/user/container:tag
 
 To use this image in your Pods, you need to specify it in your Pod's `spec.containers[].image` field:
 
-`image: localhost:5000/user/container`
+`image: localhost:5000/user/container:tag`
