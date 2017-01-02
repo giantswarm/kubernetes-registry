@@ -1,7 +1,7 @@
 +++
 title = "Running a Private Docker Registry"
 description = "Recipe to spin up a private Docker Registry on Kubernetes."
-date = "2016-10-24"
+date = "2017-01-02"
 type = "page"
 weight = 140
 tags = ["recipe"]
@@ -33,6 +33,8 @@ $ REGISTRY_POD_NAME=$(kubectl get pods --namespace registry -l app=registry,comp
 
 $ kubectl --namespace registry port-forward $REGISTRY_POD_NAME 5000:5000
 ```
+
+__Note:__ This only works if you run `kucectl` and `docker` on the same host, like in Linux. On Mac or Windows, Docker usually runs inside a VM, so you would need to install, configure, and run the above `kubectl` command inside that VM.
 
 You can then use your local docker client to push images to `localhost:5000`.
 
